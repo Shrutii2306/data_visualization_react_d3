@@ -1,9 +1,10 @@
 import './App.css';
 import * as d3 from "d3";
-
-function App() {
-
-  const width=960;
+import { BackgroundCircle } from './BackgroundCircle';
+import { Eyes } from './Eyes';
+import { Mouth } from './Mouth';
+import { FaceContainer } from './FaceContainer';
+const width=960;
   const height=500;
 
   const centerX = width/2;
@@ -15,34 +16,36 @@ function App() {
   const eyeRadius = 30;
   const mouthWidth = 10;
   const mouthRadius = 140;
-  const mouthArc = d3.arc().innerRadius(mouthRadius).outerRadius(mouthRadius+mouthWidth).startAngle(Math.PI/2).endAngle(Math.PI*3/2);
 
+
+
+function App() {
   
   return (
     <div className="App">
       
-      <svg width={width} height={height} >
-      <g transform={`translate(${centerX},${centerY})`}>
-        <circle 
-           
-          fill="yellow" 
-          r={centerY - strokeWidth/2} 
-          stroke="black" 
-          stroke-width={strokeWidth} 
+      <FaceContainer 
+        width={width}
+        height={height}
+        centerX={centerX}
+        centerY={centerY}
+      >
+        <BackgroundCircle 
+          radius={centerY - strokeWidth/2} 
+          strokeWidth = {strokeWidth}
         />
-        <circle
-          cx={- eyeOffsetX}
-          cy={- eyeOffsetY}
-          r={eyeRadius}
+        <Eyes 
+          eyeOffsetX={eyeOffsetX}
+          eyeOffsetY={eyeOffsetY}
+          eyeRadius={eyeRadius}
+        
         />
-        <circle
-          cx={ + eyeOffsetX}
-          cy={ - eyeOffsetY}
-          r={eyeRadius}
+        <Mouth
+          mouthRadius={mouthRadius}
+          mouthWidth={mouthWidth}
+        
         />
-        <path d = {mouthArc()}/>
-        </g>
-      </svg>
+        </FaceContainer>
     </div>
   );
 }
