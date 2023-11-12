@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Loading and parsing csv data</title>
+    </head>
+    <body>
+        <script>
+            
+            
+            const fetchText = async (url) => {
+
+                const response = await fetch(url);
+                return await response.text();
+                console.log(text)
+            }
+            
+
+            const csvUrl = "https://raw.githubusercontent.com/Shrutii2306/data_visualization_react_d3/main/fetching_data/color.csv";
+            
+            fetchText(csvUrl).then(text => {
+                console.log(text);
+            });
+            
+            
+            // fetch(url).then(response => {
+
+            // response.text().then(text => {
+
+            //     console.log(text);
+            // })
+
+            // });
+        </script>
+    </body>
+</html>
