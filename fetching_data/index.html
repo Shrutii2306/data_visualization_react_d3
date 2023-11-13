@@ -18,7 +18,11 @@
             const csvUrl = "https://raw.githubusercontent.com/Shrutii2306/data_visualization_react_d3/main/fetching_data/color.csv";
             
             fetchText(csvUrl).then(text => {
-                console.log(d3.csvParse(text));
+                const data = d3.csvParse(text);
+                const message = '';
+                console.log(data.length + ' kB');
+                console.log(data.length + ' rows');
+                console.log(data.columns.length + ' columns');
             });
             
             
