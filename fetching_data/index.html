@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Loading and parsing csv data</title>
+        <script src="https://www.unpkg.com/d3@7.8.5/dist/d3.min.js"></script>
     </head>
     <body>
         <script>
@@ -17,7 +18,7 @@
             const csvUrl = "https://raw.githubusercontent.com/Shrutii2306/data_visualization_react_d3/main/fetching_data/color.csv";
             
             fetchText(csvUrl).then(text => {
-                console.log(text);
+                console.log(d3.csvParse(text));
             });
             
             
